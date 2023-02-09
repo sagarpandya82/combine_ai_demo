@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @mini_post %>
+
+<div>
+  <%= link_to "Edit this mini post", edit_mini_post_path(@mini_post) %> |
+  <%= link_to "Back Home", root_path %>
+
+  <%= button_to "Destroy this mini post", @mini_post, method: :delete %>
+</div>

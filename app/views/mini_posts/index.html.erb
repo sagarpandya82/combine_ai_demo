@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Mini posts</h1>
+
+<div id="mini_posts">
+  <% @mini_posts.each do |mini_post| %>
+    <%= render mini_post %>
+    <p>
+      <%= link_to "Show this mini post", mini_post %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New mini post", new_mini_post_path %>

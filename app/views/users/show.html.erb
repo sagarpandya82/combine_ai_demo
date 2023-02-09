@@ -1,0 +1,26 @@
+<h1> User <%= @user.id %></h1>
+<% if user_signed_in? %>
+  <% unless current_user.following.uniq.include? @user.id %>
+    <h3> Not following </h3>
+    <%= button_to "Follow", { :controller => :users, :action => :follow, :user_id => params[:id], :current_user_id => current_user.id, method: :post } %>
+  <% else %>
+    <h3> Following </h3>
+    <%= button_to "Unfollow", { :controller => :users, :action => :unfollow, :user_id => params[:id], :current_user_id => current_user.id, method: :post } %>
+
+  <% end %>
+<% end %>
+<hr>
+<% @user.mini_posts.last(5).reverse_each do |post| %>
+  <%= post.content %>
+  <br>
+  <%= post.user.email %>
+  <br>
+  <%= post.created_at %>
+  <br>
+  <p>Likes: </p><%= post.likes.to_i %>
+  <% if user_signed_in? %>
+    <%= button_to "Like", { :controller => :mini_posts, :action => :like, :post_id => post.id, method: :post } %>
+    <%= button_to "Dislike", { :controller => :mini_posts, :action => :dislike, :post_id => post.id, method: :post } %>
+  <% end %>
+  <hr>
+<% end %>
