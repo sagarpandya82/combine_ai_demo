@@ -57,19 +57,19 @@ class MiniPostsController < ApplicationController
     end
   end
 
-  def like
-    @mini_post = MiniPost.find(params[:post_id])
-    @mini_post.likes = @mini_post.likes.to_i + 1
-    @mini_post.save
-    redirect_back fallback_location: root_path
-  end
-
-  def dislike
-    @mini_post = MiniPost.find(params[:post_id])
-    @mini_post.likes = @mini_post.likes.to_i - 1
-    @mini_post.save
-    redirect_back fallback_location: root_path
-  end
+  # def like
+  #   @mini_post = MiniPost.find(params[:post_id])
+  #   @mini_post.likes = @mini_post.likes.to_i + 1
+  #   @mini_post.save
+  #   redirect_back fallback_location: root_path
+  # end
+  #
+  # def dislike
+  #   @mini_post = MiniPost.find(params[:post_id])
+  #   @mini_post.likes = @mini_post.likes.to_i - 1
+  #   @mini_post.save
+  #   redirect_back fallback_location: root_path
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

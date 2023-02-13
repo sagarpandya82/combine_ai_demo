@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   post 'unfollow', to: 'users#unfollow'
   # Defines the root path route ("/")
 
-  post 'like', to: 'mini_posts#like'
-  post 'dislike', to: 'mini_posts#dislike'
+  post 'like', to: 'likes#create'
+  post 'dislike', to: 'likes#destroy'
 
   root "home#index"
 end

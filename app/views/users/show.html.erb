@@ -17,10 +17,11 @@
   <br>
   <%= post.created_at %>
   <br>
-  <p>Likes: </p><%= post.likes.to_i %>
-  <% if user_signed_in? %>
-    <%= button_to "Like", { :controller => :mini_posts, :action => :like, :post_id => post.id, method: :post } %>
-    <%= button_to "Dislike", { :controller => :mini_posts, :action => :dislike, :post_id => post.id, method: :post } %>
+  <b>Likes: </b><%= post.likes.count %>
+  <% if user_signed_in? && post.likes.count < 1 %>
+    <%= button_to "Like", { :controller => :likes, :action => :create, :post_id => post.id, method: :post } %>
+  <% else %>
+    <%= button_to "Unlike", { :controller => :likes, :action => :destroy, :post_id => post.id, method: :post } %>
   <% end %>
   <hr>
 <% end %>
